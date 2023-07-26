@@ -1,0 +1,43 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.news-container {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Estilos para cada elemento de noticia (carta) */
+.news-item {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex-basis: calc(25% - 20px);
+    /* Ajusta el ancho de cada elemento para mostrar 4 por fila */
+    margin-bottom: 20px;
+}
+
+/* Estilos para la imagen de cada noticia */
+.news-image {
+    border-radius: 3px;
+    width: 30%;
+    height: 300px;
+    object-fit: cover;
+}
+
+/* Estilos para el enlace */
+.news-link {
+    text-decoration: none;
+    color: #000;
+}
+
+/* Estilos para el título de cada noticia */
+.news-title {
+    font-size: 20px;
+    font-weight: bold;
+}
