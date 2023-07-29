@@ -4,30 +4,41 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.news-container {
-    padding: 20px;
+.news-item a {
+    text-decoration: none;
+}
+
+.container-new {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
 }
 
+/* .news-container {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+} */
+
 /* Estilos para cada elemento de noticia (carta) */
 .news-item {
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    padding: 10px;
-    background-color: #f9f9f9;
+    margin: 5px;
+    height: 500px;
+    text-decoration: none;
+}
+
+.news-item :hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    flex-basis: calc(25% - 20px);
-    /* Ajusta el ancho de cada elemento para mostrar 4 por fila */
-    margin-bottom: 20px;
+
 }
 
 /* Estilos para la imagen de cada noticia */
 .news-image {
     border-radius: 3px;
-    width: 30%;
+    width: 100%;
     height: 300px;
     object-fit: cover;
+    margin: 5px;
 }
 
 /* Estilos para el enlace */

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Accordion from "react-bootstrap/Accordion";
+import Alert from "react-bootstrap/Alert";
 
 const TopGainesLoser = () => {
   const [dataTop, setDataTop] = useState([]);
@@ -47,55 +49,74 @@ const TopGainesLoser = () => {
   return (
     <div>
       <h2>TOP_GAINERS</h2>
-      {dataTop.top_gainers ? (
-        dataTop.top_gainers.map((item, index) => (
-          <div key={index}>
-            <ul>
-              <li> ticker: {item.ticker}</li>
-              <li>price: {item.price}</li>
-              <li>change_amount: {item.change_amount}</li>
-              <li>change_percentage:{item.change_percentage}</li>
-              <li>volume: {item.volume}</li>
-            </ul>
-          </div>
-        ))
-      ) : (
-        <p>No hay datos disponibles para TOP GAINERS</p>
-      )}
-
-      <h2>TOP_LOSERS</h2>
-      {dataTop.top_losers ? (
-        dataTop.top_losers.map((item, index) => (
-          <div key={index}>
-            <ul>
-              <li> ticker:{item.ticker}</li>
-              <li>price: {item.price}</li>
-              <li>change_amount: {item.change_amount}</li>
-              <li>change_percentage: {item.change_percentage}</li>
-              <li>volume: {item.volume}</li>
-            </ul>
-          </div>
-        ))
-      ) : (
-        <p>No hay datos disponibles para TOP LOSERS</p>
-      )}
-
-      <h2>Most Actively</h2>
-      {dataTop.most_actively_traded ? (
-        dataTop.most_actively_traded.map((item, index) => (
-          <div key={index}>
-            <ul>
-              <li> ticker: {item.ticker}</li>
-              <li>price: {item.price}</li>
-              <li>change_amount: {item.change_amount}</li>
-              <li>change_percentage: {item.change_percentage}</li>
-              <li>volume: {item.volume}</li>
-            </ul>
-          </div>
-        ))
-      ) : (
-        <p>No hay datos disponibles para Most Actively</p>
-      )}
+      <Accordion defaultActiveKey="0" flush>
+        <Accordion.Item eventKey="0">
+          <Accordion.Header>TOP_GAINERS</Accordion.Header>
+          <Accordion.Body>
+            {dataTop.top_gainers ? (
+              dataTop.top_gainers.map((item, index) => (
+                <div key={index}>
+                  {["info"].map((variant) => (
+                    <Alert key={variant} variant={variant}>
+                      <h6> ticker: {item.ticker}</h6>
+                      <h6>price: {item.price}</h6>
+                      <h6>change_amount: {item.change_amount}</h6>
+                      <h6>change_percentage: {item.change_percentage}</h6>
+                      <h6>volume: {item.volume}</h6>
+                    </Alert>
+                  ))}
+                </div>
+              ))
+            ) : (
+              <p>No hay datos disponibles para TOP GAINERS</p>
+            )}
+          </Accordion.Body>
+        </Accordion.Item>
+        <Accordion.Item eventKey="1">
+          <Accordion.Header>TOP_LOSERS</Accordion.Header>
+          <Accordion.Body>
+            {dataTop.top_losers ? (
+              dataTop.top_losers.map((item, index) => (
+                <div key={index}>
+                  {["danger"].map((variant) => (
+                    <Alert key={variant} variant={variant}>
+                      <h6> ticker: {item.ticker}</h6>
+                      <h6>price: {item.price}</h6>
+                      <h6>change_amount: {item.change_amount}</h6>
+                      <h6>change_percentage: {item.change_percentage}</h6>
+                      <h6>volume: {item.volume}</h6>
+                    </Alert>
+                  ))}
+                </div>
+              ))
+            ) : (
+              <p>No hay datos disponibles para TOP LOSERS</p>
+            )}
+          </Accordion.Body>
+        </Accordion.Item>
+        <Accordion.Item eventKey="2">
+          <Accordion.Header>Most Actively</Accordion.Header>
+          <Accordion.Body>
+            {dataTop.most_actively_traded ? (
+              dataTop.most_actively_traded.map((item, index) => (
+                <div key={index}>
+                  {["warning"].map((variant) => (
+                    <Alert key={variant} variant={variant}>
+                      <h6> ticker: {item.ticker}</h6>
+                      <h6>price: {item.price}</h6>
+                      <h6>change_amount: {item.change_amount}</h6>
+                      <h6>change_percentage: {item.change_percentage}</h6>
+                      <h6>volume: {item.volume}</h6>
+                    </Alert>
+                  ))}
+                </div>
+              ))
+            ) : (
+              <p>No hay datos disponibles para Most Actively</p>
+            )}
+          </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
     </div>
   );
 };

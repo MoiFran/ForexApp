@@ -6,6 +6,8 @@ import Button from "react-bootstrap/Button";
 // import Row from "react-bootstrap/Row";
 // import Col from "react-bootstrap/Col";
 import Spinner from "react-bootstrap/Spinner";
+
+import Card from "react-bootstrap/Card";
 import "../newLetter.css";
 
 const NewLetter = () => {
@@ -35,7 +37,8 @@ const NewLetter = () => {
   console.log(dataNew);
 
   return (
-    <div>
+    <div className="container-new">
+      <h1>{dataNew.feed.length} New's</h1>
       {loading ? (
         <div className="loading-container">
           <p>
@@ -48,13 +51,17 @@ const NewLetter = () => {
           {dataNew && dataNew.feed && dataNew.feed.length > 0 ? (
             dataNew.feed.map((item, index) => (
               <div className="news-item" key={index}>
-                <img
-                  className="news-image"
-                  src={item.banner_image}
-                  alt={item.title}
-                />
-                <a href={item.url} className="news-link">
-                  <h2 className="news-title">{item.title.slice(0, 200)}...</h2>
+                <a href={item.url}>
+                  <Card style={{ width: "18rem", height: "28rem" }} key={index}>
+                    <Card.Img
+                      variant="top"
+                      src={item.banner_image}
+                      alt={item.title}
+                    />
+                    <Card.Body href={item.url}>
+                      <Card.Title>{item.title.slice(0, 200)}...</Card.Title>
+                    </Card.Body>
+                  </Card>
                 </a>
               </div>
             ))
