@@ -2,10 +2,12 @@
     align-items: center;
     width: 40%;
     align-content: center;
+    margin-left: 30%;
+    padding: 5%;
 }
 
 .color1 {
-    color: aqua;
+    color: rgb(112, 132, 132);
 }
 
 .color2 {
@@ -18,4 +20,10 @@
 
 .currenInfo {
     color: aliceblue;
+}
+
+.container {
+    align-items: center;
+    width: 100vw;
+
 }

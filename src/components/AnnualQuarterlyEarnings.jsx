@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
+import Table from "react-bootstrap/Table";
+import "../annual.css";
 
 const AnnualQuarterlyEarnings = () => {
   const [symbol, setSymbol] = useState("");
-  const [reportType, setReportType] = useState("quarterly");
+  // const [reportType, setReportType] = useState("quarterly");
   const [earningsData, setEarningsData] = useState(null);
 
   const handleFormSubmit = async (event) => {
@@ -21,43 +25,81 @@ const AnnualQuarterlyEarnings = () => {
       console.error("Error fetching data:", error);
       setEarningsData(null);
     }
+    console.log("work");
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Annual and Quarterly Earnings</h1>
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit} className="form-container">
         <label>
           Symbol:
           <input
             type="text"
             value={symbol}
             onChange={(event) => setSymbol(event.target.value)}
+            className="text-input"
           />
         </label>
 
-        <button type="submit">Search</button>
+        <button type="submit" className="btn-serch">
+          Search
+        </button>
       </form>
-      Empresa: {earningsData.symbol}
-      {earningsData ? (
-        <div>
-          <h2>Symbol: {earningsData.symbol}</h2>
-          <div>
-            <h2>Annual Earnings:</h2>
-            <ul>
-              {earningsData.annualEarnings.map((earning, index) => (
-                <li key={index}>
-                  <b>Fiscal Date Ending:</b> {earning.fiscalDateEnding}
-                  <br />
-                  <b>Reported EPS:</b> {earning.reportedEPS}
-                  <br />
-                </li>
-              ))}
-            </ul>
-          </div>
+      {earningsData && earningsData.symbol && (
+        <div className="annualData">
+          <Tabs
+            defaultActiveKey="Annual Earnings"
+            id="uncontrolled-tab-example"
+            className="mb-3"
+          >
+            <Tab eventKey="home" title="Annual Earnings">
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>Fiscal Date Ending</th>
+                    <th>Reported EPS</th>
+                  </tr>
+                </thead>
+                {earningsData.annualEarnings.map((earning, index) => (
+                  <tbody key={index}>
+                    <tr>
+                      <td>{earning.fiscalDateEnding}</td>
+                      <td>{earning.reportedEPS} %</td>
+                    </tr>
+                  </tbody>
+                ))}
+              </Table>
+            </Tab>
+            <Tab eventKey="profile" title="Quarterly Earning">
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>Fiscal Date Ending</th>
+                    <th>Reported EPS</th>
+                  </tr>
+                </thead>
+                {earningsData.quarterlyEarnings.map((earning, index) => (
+                  <tbody key={index}>
+                    <tr>
+                      <td>{earning.fiscalDateEnding}</td>
+                      <td>{earning.reportedEPS} %</td>
+                    </tr>
+                  </tbody>
+                ))}
+              </Table>
+            </Tab>
+          </Tabs>
         </div>
-      ) : (
-        <p>No se han encontrado datos de ganancias.</p>
+      )}
+      {earningsData && !earningsData.symbol && (
+        <p>No se ha encontrado el símbolo.</p>
+      )}
+      {earningsData && !earningsData.annualEarnings && (
+        <p>No se han encontrado datos de ganancias anuales.</p>
+      )}
+      {earningsData && !earningsData.quarterlyEarnings && (
+        <p>No se han encontrado datos de ganancias trimestrales </p>
       )}
     </div>
   );

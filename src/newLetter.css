@@ -4,6 +4,13 @@ body {
     font-family: Arial, sans-serif;
 }
 
+.select-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+}
+
 .news-item a {
     text-decoration: none;
 }
@@ -14,11 +21,11 @@ body {
     flex-wrap: wrap;
 }
 
-/* .news-container {
+.news-container {
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
-} */
+}
 
 /* Estilos para cada elemento de noticia (carta) */
 .news-item {
@@ -27,10 +34,7 @@ body {
     text-decoration: none;
 }
 
-.news-item :hover {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-}
 
 /* Estilos para la imagen de cada noticia */
 .news-image {

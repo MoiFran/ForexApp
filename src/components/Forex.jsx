@@ -6,6 +6,7 @@ import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import TopGainesLoser from "./TopGainesLoser";
 
 const Forex = () => {
   const currenciesList = [
