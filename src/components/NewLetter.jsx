@@ -121,25 +121,24 @@ const NewLetter = () => {
             {dataNew && dataNew.feed && dataNew.feed.length > 0 ? (
               dataNew.feed.map((item, index) => (
                 <div className="news-item" key={index}>
-                  <img
-                    src={item.banner_image}
-                    alt={item.title}
-                    className="news-image"
-                  />
-
-                  <OverlayTrigger
-                    placement="top"
-                    delay={{ hide: 400 }}
-                    overlay={
-                      <Tooltip id="button-tooltip">{item.title}</Tooltip>
-                    }
-                  >
-                    <Card.Title style={{ color: "#ffff" }}>
-                      {item.title.slice(0, 100)}...
-                    </Card.Title>
-                  </OverlayTrigger>
-
                   <a href={item.url}>
+                    <img
+                      src={item.banner_image}
+                      alt={item.title}
+                      className="news-image"
+                    />
+
+                    <OverlayTrigger
+                      placement="top"
+                      delay={{ hide: 400 }}
+                      overlay={
+                        <Tooltip id="button-tooltip">{item.title}</Tooltip>
+                      }
+                    >
+                      <Card.Title style={{ color: "#ffff" }}>
+                        {item.title.slice(0, 100)}...
+                      </Card.Title>
+                    </OverlayTrigger>
                     <Button
                       style={{
                         borderRadius: "2px",
