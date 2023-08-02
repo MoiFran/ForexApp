@@ -9,6 +9,7 @@ import Spinner from "react-bootstrap/Spinner";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import Card from "react-bootstrap/Card";
+import Placeholder from "react-bootstrap/Placeholder";
 import "../newLetter.css";
 
 const NewLetter = () => {
@@ -91,7 +92,7 @@ const NewLetter = () => {
   };
 
   return (
-    <div className="">
+    <div className="body">
       <div className="select-container">
         <select value={symbol} onChange={handleChange}>
           <option value="">Selecciona un ticker</option>
@@ -109,7 +110,9 @@ const NewLetter = () => {
         {loading ? (
           <div className="loading-container">
             <p>
-              Cargando...
+              <Placeholder xs={6} />
+              <Placeholder className="w-75" />{" "}
+              <Placeholder style={{ width: "25%" }} />
               <Spinner animation="border" />
             </p>
           </div>
@@ -118,35 +121,36 @@ const NewLetter = () => {
             {dataNew && dataNew.feed && dataNew.feed.length > 0 ? (
               dataNew.feed.map((item, index) => (
                 <div className="news-item" key={index}>
-                  <Card
-                    style={{
-                      width: "18rem",
-                      alignItems: "center",
-                      padding: "0.5rem",
-                      height: "max-content",
-                    }}
-                    key={index}
+                  <img
+                    src={item.banner_image}
+                    alt={item.title}
+                    className="news-image"
+                  />
+
+                  <OverlayTrigger
+                    placement="top"
+                    delay={{ hide: 400 }}
+                    overlay={
+                      <Tooltip id="button-tooltip">{item.title}</Tooltip>
+                    }
                   >
-                    <Card.Img
-                      variant="top"
-                      src={item.banner_image}
-                      alt={item.title}
-                    />
-                    <Card.Body>
-                      <OverlayTrigger
-                        placement="top"
-                        delay={{ hide: 400 }}
-                        overlay={
-                          <Tooltip id="button-tooltip">{item.title}</Tooltip>
-                        }
-                      >
-                        <Card.Title>{item.title.slice(0, 100)}...</Card.Title>
-                      </OverlayTrigger>
-                    </Card.Body>
-                    <a href={item.url}>
-                      <Button> More ...</Button>
-                    </a>
-                  </Card>
+                    <Card.Title style={{ color: "#ffff" }}>
+                      {item.title.slice(0, 100)}...
+                    </Card.Title>
+                  </OverlayTrigger>
+
+                  <a href={item.url}>
+                    <Button
+                      style={{
+                        borderRadius: "2px",
+                        marginTop: "0.5rem",
+                        backgroundColor: "#00d4ff",
+                      }}
+                    >
+                      {" "}
+                      More ...
+                    </Button>
+                  </a>
                 </div>
               ))
             ) : (

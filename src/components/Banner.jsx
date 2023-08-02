@@ -23,7 +23,7 @@ const Banner = () => {
             className="d-block w-100"
             src={stockTradingImage}
             style={{
-              height: "70vh",
+              height: "50vh",
               objectFit: "cover",
               width: "auto",
             }} // Estilo para ajustar la altura al 30% de la ventana (30vh)
@@ -37,7 +37,7 @@ const Banner = () => {
             className="d-block w-100"
             src={stockTradingImage5}
             style={{
-              height: "70vh",
+              height: "50vh",
               objectFit: "cover",
               width: "auto",
             }} // Estilo para ajustar la altura al 30% de la ventana (30vh)
@@ -51,7 +51,7 @@ const Banner = () => {
             className="d-block w-100"
             src={stockTradingImage3}
             style={{
-              height: "70vh",
+              height: "50vh",
               objectFit: "cover",
               width: "auto",
             }} // Estilo para ajustar la altura al 30% de la ventana (30vh)
@@ -65,7 +65,7 @@ const Banner = () => {
             className="d-block w-100"
             src={stockTradingImage4}
             style={{
-              height: "70vh",
+              height: "50vh",
               objectFit: "cover",
               width: "auto",
             }} // Estilo para ajustar la altura al 30% de la ventana (30vh)
