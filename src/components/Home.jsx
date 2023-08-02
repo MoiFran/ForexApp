@@ -52,7 +52,7 @@ const CustomNavBar = () => {
       //Hacer que la barra sea estática
     >
       <Container fluid bg="dark">
-        <Navbar.Brand as={Link} to="/NewsLetter">
+        <Navbar.Brand as={Link} to="/">
           News Letter
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="offcanvasNavbar" onClick={handleToggle} />
