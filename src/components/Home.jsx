@@ -24,7 +24,7 @@ const Home = () => {
       <Router>
         <Route path="/Forex" component={Forex} />
         <Route path="/top-gaines-losers" component={TopGainesLosers} />
-        <Route path="/NewsLetter" component={NewLetter} />
+        <Route path="/" component={NewLetter} />
         <Route path="/GlobalQuotes" component={GlobalQuotes} />
         <Route
           path="/AnnualQuarterlyEarnings"
