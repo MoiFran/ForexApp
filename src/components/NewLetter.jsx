@@ -112,7 +112,7 @@ const NewLetter = () => {
             <p>
               <Placeholder xs={6} />
               <Placeholder className="w-75" />{" "}
-              <Placeholder style={{ width: "25%" }} />
+              <Placeholder style={{ width: "50%" }} />
               <Spinner animation="border" />
             </p>
           </div>
