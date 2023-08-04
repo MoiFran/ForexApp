@@ -1,0 +1,17 @@
+:root {
+    --primary-color: #333;
+    --secondary-color: #666;
+    --tertiary-color: #999;
+    --quaternary-color: #ccc;
+    --quinary-color: #eee;
+    --senary-color: #fff;
+}
+
+html {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-color);
+    height: 100%;
+    width: 100%;
+}

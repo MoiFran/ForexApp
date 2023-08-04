@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import "../styleForex.css";
+//import "../styleForex.css";
 import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import TopGainesLoser from "./TopGainesLoser";
+import Table from "react-bootstrap/Table";
 
 const Forex = () => {
   const currenciesList = [
@@ -65,11 +66,13 @@ const Forex = () => {
 
   return (
     <div className="container">
-      <h1 className="header color1">Consulta de Divisas Forex</h1>
+      <h1 className="header color1" style={{ color: "#1F75FE" }}>
+        Consulta de Divisas Forex
+      </h1>
       <div className="form-Style">
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Form.Group className="mb-3">
-            <Form.Label>From Currency</Form.Label>
+            <Form.Label style={{ color: "#f3f3f7" }}>From Currency</Form.Label>
             <Form.Select id="fromCurrency" {...register("from_currency")}>
               <option>Currency</option>
               {currenciesList.map((currency) => (
@@ -81,7 +84,7 @@ const Forex = () => {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>To Currency</Form.Label>
+            <Form.Label style={{ color: "#f3f3f7" }}>To Currency</Form.Label>
             <Form.Select id="toCurrency" {...register("to_currency")}>
               <option>Currency</option>
               {currenciesList.map((currency) => (
@@ -99,34 +102,48 @@ const Forex = () => {
       </div>
       <div className="currenInfo">
         {loading ? (
-          <p style={{ color: "black" }}>Esperando resultados...</p>
+          <p style={{ color: "#f3f3f7" }}>
+            Esperando resultados <Spinner animation="grow" size="sm" />
+          </p>
         ) : (
-          <>
-            <Modal
-              show={show}
-              onHide={handleClose}
-              backdrop="static"
-              keyboard={false}
-            >
-              <Modal.Header closeButton>
-                <Modal.Title>Currency info</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <p>
-                  From Currency Code: {currencyInfo["1. From_Currency Code"]}
-                </p>
-                <p>
-                  From Currency Name: {currencyInfo["2. From_Currency Name"]}
-                </p>
-                <p>To Currency Code: {currencyInfo["3. To_Currency Code"]}</p>
-                <p>To Currency Name: {currencyInfo["4. To_Currency Name"]}</p>
-                <p>Exchange Rate: {currencyInfo["5. Exchange Rate"]}</p>
-                <p>Last Refreshed: {currencyInfo["6. Last Refreshed"]}</p>
-                <p>Bid Price: {currencyInfo["8. Bid Price"]}</p>
-                <p>Ask Price: {currencyInfo["9. Ask Price"]}</p>
-              </Modal.Body>
-            </Modal>
-          </>
+          <Table variant="dark" striped bordered hover>
+            <tbody style={{ color: "#f3f3f7" }}>
+              <tr>
+                <td>From Currency Code:</td>
+                <td>{currencyInfo["1. From_Currency Code"]}</td>
+              </tr>
+              <tr>
+                <td>From Currency Nmea</td>
+                <td>{currencyInfo["2. From_Currency Name"]}</td>
+              </tr>
+
+              <tr>
+                {" "}
+                <td>To Currency Name</td>
+                <td>{currencyInfo["4. To_Currency Name"]}</td>
+              </tr>
+              <tr>
+                <td>To Currency Code</td>
+                <td>{currencyInfo["3. To_Currency Code"]}</td>
+              </tr>
+              <tr>
+                <td>Exchange Rate</td>
+                <td>{currencyInfo["5. Exchange Rate"]}</td>
+              </tr>
+              <tr>
+                <td>Last Refreshed</td>
+                <td> {currencyInfo["6. Last Refreshed"]}</td>
+              </tr>
+              <tr>
+                <td>Bid Price</td>
+                <td> {currencyInfo["8. Bid Price"]}</td>
+              </tr>
+              <tr>
+                <td>Ask Price</td>
+                <td> {currencyInfo["9. Ask Price"]}</td>
+              </tr>
+            </tbody>
+          </Table>
         )}
       </div>
     </div>

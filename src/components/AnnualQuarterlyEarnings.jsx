@@ -3,7 +3,7 @@ import axios from "axios";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Table from "react-bootstrap/Table";
-import "../annual.css";
+import "../style/annual.css";
 
 const AnnualQuarterlyEarnings = () => {
   const [symbol, setSymbol] = useState("");
@@ -30,7 +30,7 @@ const AnnualQuarterlyEarnings = () => {
 
   return (
     <div className="container">
-      <h1>Annual and Quarterly Earnings</h1>
+      <h1 style={{ color: "#1F75FE" }}>Annual and Quarterly Earnings</h1>
       <form onSubmit={handleFormSubmit} className="form-container">
         <label>
           Symbol:
@@ -54,7 +54,7 @@ const AnnualQuarterlyEarnings = () => {
             className="mb-3"
           >
             <Tab eventKey="home" title="Annual Earnings">
-              <Table striped bordered hover>
+              <Table striped bordered hover variant="dark">
                 <thead>
                   <tr>
                     <th>Fiscal Date Ending</th>
@@ -72,7 +72,7 @@ const AnnualQuarterlyEarnings = () => {
               </Table>
             </Tab>
             <Tab eventKey="profile" title="Quarterly Earning">
-              <Table striped bordered hover>
+              <Table striped bordered hover variant="dark">
                 <thead>
                   <tr>
                     <th>Fiscal Date Ending</th>

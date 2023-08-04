@@ -10,7 +10,7 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import Card from "react-bootstrap/Card";
 import Placeholder from "react-bootstrap/Placeholder";
-import "../newLetter.css";
+import "../style/newLetter.css";
 
 const NewLetter = () => {
   const moreTickers = [
@@ -62,6 +62,7 @@ const NewLetter = () => {
   const [result, setResult] = useState();
 
   const fetchData = async () => {
+    setLoading(true);
     try {
       // Simula un retraso de 2 segundos antes de obtener la respuesta de la API
       await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -91,6 +92,8 @@ const NewLetter = () => {
     fetchData();
   };
 
+  console.log(dataNew);
+
   return (
     <div className="body">
       <div className="select-container">
@@ -110,9 +113,6 @@ const NewLetter = () => {
         {loading ? (
           <div className="loading-container">
             <p>
-              <Placeholder xs={6} />
-              <Placeholder className="w-75" />{" "}
-              <Placeholder style={{ width: "50%" }} />
               <Spinner animation="border" />
             </p>
           </div>
@@ -143,7 +143,7 @@ const NewLetter = () => {
                       style={{
                         borderRadius: "2px",
                         marginTop: "0.5rem",
-                        backgroundColor: "#00d4ff",
+                        backgroundColor: "#1F75FE",
                       }}
                     >
                       {" "}

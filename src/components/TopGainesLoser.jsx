@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Accordion from "react-bootstrap/Accordion";
 import Alert from "react-bootstrap/Alert";
-import "../newLetter.css";
 
 const TopGainesLoser = () => {
   const [dataTop, setDataTop] = useState([]);
@@ -49,13 +48,13 @@ const TopGainesLoser = () => {
 
   return (
     <div>
-      <h2>TOP_GAINERS</h2>
-      <Accordion defaultActiveKey="0" flush>
+      <h2 style={{ color: "#1F75FE" }}>TOP GAINERS AND LOSERS</h2>
+      <Accordion defaultActiveKey="0" flush style={{ color: "#1F75FE" }}>
         <Accordion.Item eventKey="0">
           <Accordion.Header>TOP_GAINERS</Accordion.Header>
           <Accordion.Body
             className="news-item container-new"
-            style={{ margin: "5px" }}
+            style={{ margin: "5px", color: "#1F75FE" }}
           >
             {dataTop.top_gainers ? (
               dataTop.top_gainers.map((item, index) => (
